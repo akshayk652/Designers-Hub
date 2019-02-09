@@ -1,0 +1,12 @@
+{% extends 'user_profile/base.html' %} {% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/event-ratings.css' %}" />
+{% endblock css %}
+
+{% block content %}
+<article>
+    <div>Winner is {{ winner_name }} with {{ winner_score }}</div>
+    <div> <img src="{{ winner_img.url }}" /></div>
+</article>
+{% endblock %}

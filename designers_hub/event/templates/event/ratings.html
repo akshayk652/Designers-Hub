@@ -1,0 +1,51 @@
+{% extends 'user_profile/base.html' %} {% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/event-ratings.css' %}" />
+{% endblock css %}
+
+{% block content %}
+<article>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for img in event_imgs %}
+        <div class="project_card">
+            <div class="img-holder size">
+                <img src="{{ img.img_file.url }}" class="responsive" alt="">
+            </div>
+            <div class="project_content size">
+
+                <p>
+                    <label>
+                        <input name="{{ img.participant.username }}" type="radio" value=1 checked />
+                        <span>1</span>
+                    </label>
+
+                    <label>
+                        <input name="{{ img.participant.username }}" type="radio" value=2 />
+                        <span>2</span>
+                    </label>
+                    <label>
+                        <input name="{{ img.participant.username }}" type="radio" value=3 />
+                        <span>3</span>
+                    </label>
+
+                    <label>
+                        <input name="{{ img.participant.username }}" type="radio" value=4 />
+                        <span>4</span>
+                    </label>
+                    <label>
+                        <input name="{{ img.participant.username }}" type="radio" value=5 />
+                        <span>5</span>
+                    </label>
+                </p>
+
+            </div>
+
+        </div>
+        {% endfor %}
+        <button type="submit">
+            <a class="waves-effect waves-light btn" style="margin-top:1.8em;">Submit</a></button>
+    </form>
+</article>
+{% endblock content %}

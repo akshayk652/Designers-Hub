@@ -1,0 +1,13 @@
+{% extends 'user_profile/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container" style="width:40%; margin-top: 2em;">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <legend>Create Event</legend>
+        {{ form | crispy }}
+        <button class="btn btn-primary" type="submit">Create Event</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'user_profile/base.html' %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/client-profile.css' %}" />
+{% endblock css %}
+
+{% block content %}
+<article>
+    <div class="img-contains">
+        <img src="{{ client_user.profile_img.url }}" class="responsive-i" alt="something">
+    </div>
+    <div class="name-container">
+        <p class="name">{{ user.username }}</p>
+    </div>
+    <div class="details">
+        <ul>
+            <li class="profile-detail">Contracts Proposed: <span class="bdg"> {{ count_contract }}</span></li>
+        </ul>
+    </div>
+    <div class="work-space">
+        <div class="extra-btns">
+            {% if present_user == username %}
+            <div class="extra-new-btn"> <a href="{% url 'contracts-list' %}">Contracts</a></div>
+            {% endif %}
+            {% if present_user != username %}
+            <form action="{% url 'chat-room' user.username %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="extra-new-btn">Message</button>
+            </form>
+            {% endif %}
+            {% if present_user == username %}
+            <div class="extra-new-btn "><a href="{% url 'settings' username %}">Account Settings</a></div>
+            {% endif %}
+        </div>
+    </div>
+</article>
+{% endblock content %}

@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/normalize.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/main.css' %}" />
+</head>
+{% block css %}
+
+{% endblock %}
+
+<body>
+
+    <header>
+        <section class="nav-section">
+            <ul class="navbar">
+                <li class="logo nav_item"><a href="{% url 'home' %}">
+                        <img class="responsive-img" src="{% static 'images/logo.jpg' %}" alt="LoGo">
+                    </a></li>
+                <li class="search">
+                    <form action="{% url 'search' %}" method="get">
+                        <input class="nav-search" type="search" name="q" id="search" value='{{ request.GET.q }}' placeholder="Search..">
+                    </form>
+                </li>
+                <li class="nav_item ">
+                    <ul class="nav_content">
+                        <li class="nav_link nav_btn"><a href="#"><i class="fas fa-home"></i></a></li>
+                        {% if not user.is_client %}
+                        <li class="nav_link nav_btn"><a href="{% url 'events-list' %}">Events</a></li>
+                        {% endif%}
+                        {% if user.is_authenticated %}
+                        {% if user.is_client %}
+                        <li class="nav_link nav_btn"><a href="{% url 'client_profile' request.user.username %}">Profile</a></li>
+                        {% else %}
+                        <li class="nav_link nav_btn"><a href="{% url 'designer_profile' request.user.username %}">Profile</a></li>
+                        {% endif %}
+                        <li class="nav_link nav_btn"><a href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                        <li class="nav_link nav_btn"><a href="{% url 'landing' %}">Register</a></li>
+                        <li class="nav_link nav_btn"><a href="{% url 'login' %}">Login</a></li>
+                        {% endif%}
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </header>
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% block js %}
+
+    {% endblock %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>

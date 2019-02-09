@@ -1,0 +1,38 @@
+{% extends 'user_profile/base.html' %} {% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/event-details.css' %}" />
+{% endblock css %}
+
+{% block content %}
+<article>
+    <div class="project_card">
+        <div class="head size">
+            <p><a href="#">{{ event.name }}</a></p>
+        </div>
+
+        <div class="project_content size">
+            <p class="project_desc">
+                {{ event.description }}
+            </p>
+        </div>
+        <p class="event-topic">
+            {{ event.topic }}
+        </p>
+        <div class="slide">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p class="make"><label for="files" class="make hide-me"><a>Upload File</a></label>
+                    <input id="files" style="visibility:hidden;" type="file" name="myfile"></p>
+                <p class="make"> Date: <b>20-02-2019</b> </p>
+        </div>
+    </div>
+    <div class="timer"><span>05 m 00s</span></div>
+    <button type="submit" class="submit"><a>Submit</a></button>
+    </form>
+</article>
+{% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/event.js' %}"></script>
+{% endblock js %}

@@ -1,0 +1,44 @@
+{% extends 'user_profile/base.html' %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/contracts.css' %}" />
+{% endblock css %}
+
+
+{% block content %}
+
+
+<article>
+  {% if is_exists %}
+  {% for contract in contracts %}
+  {% if contract.status == "active" %}
+  <div class="project_card">
+    <div class="head size">
+      <p><a href="{% url 'contract-details' contract.id %}">{{ contract.title }}</a></p>
+    </div>
+
+    <div class="project_content size">
+      <p class="project_desc">
+        {{ contract.description }}
+      </p>
+    </div>
+    <div class="slide">
+      <p class="make"><a href="#">With client</a></p>
+      <p class="make"> Date: <b>{{ contract.date_created }}</b> </p>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% else %}
+  <div>No Contracts Exists</div>
+  {% endif %}
+  {% if account_type %}
+  <form action="{% url 'contract-form' %}" method="get">
+    <button class="waves-effect waves-light btn" type="submit" style="margin-top:1.8em;">New Contract</button>
+  </form>
+  {% endif %}
+</article>
+
+{% endblock content %}

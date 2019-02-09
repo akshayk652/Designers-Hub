@@ -1,0 +1,71 @@
+{% extends 'user_profile/base.html' %}
+{% load static %}
+
+
+
+{% block css %}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/designer-profile.css' %}" />
+{% endblock css %}
+
+{% block content %}
+<article>
+    <div class="img-contains">
+        <img src="{{ designer_user.profile_img.url }}" class="responsive-i" alt="something">
+    </div>
+    <div class="name-container">
+        <p class="name">{{ designer.user.username }}</p>
+    </div>
+    <div class="details">
+        <ul>
+            <li class="profile-detail">Experience: <span class="bdg">{{ designer.experience }}</span></li>
+            <li class="profile-detail">Skills:
+                {% for skill in skills %}
+                <span class="bdg">{{ skill }}</span>
+                {% endfor %}
+            <li class="profile-detail">Rating: <span class="bdg"> {{ rating }} </span></li>
+            <li class="profile-detail">Contracts Completed: <span class="bdg"> {{ count_contract }}</span></li>
+        </ul>
+    </div>
+    <div class="work-space">
+
+        {% if user.username == designer.user.username %}
+        <div class="upload-btn "><a href="{% url 'upload_portfolio' username %}">Upload Project</a></div>
+        {% endif %}
+        <div class="extra-btns">
+            {% if user.username == designer.user.username %}
+            <div class="extra-new-btn"> <a href="{% url 'contracts-list' %}">Contracts</a></div>
+            {% endif %}
+            {% if user.username != designer.user.username %}
+            <form action="{% url 'chat-room' user.username %}" method="POST">
+                {% csrf_token %}
+                <button class="extra-new-btn" type="submit">Message</button>
+            </form>
+            {% endif %}
+            {% if user.username == designer.user.username %}
+            <div class="extra-new-btn "><a href="{% url 'settings' username %}">Account Settings</a></div>
+            {% endif %}
+        </div>
+    </div>
+</article>
+<h3>My Projects</h3>
+<section class="projects">
+    {% for project in projects %}
+    <div class="project_card">
+        <div class="head size">
+            <img class="user_img" src="{{ designer_user.profile_img.url }}">
+            <p><a href="projects/{{ project.id }}">{{ project.name }}</a></p>
+            <p class="date"><em>{{ project.date_created }}</em></p>
+        </div>
+        <div class="img-holder size">
+            <img src="{{ project.image_file_path.url }} " class="responsive" alt="">
+        </div>
+        <div class="project_content size">
+            <p class="project_desc">
+                {{ project.description }}
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+{% endblock content %}

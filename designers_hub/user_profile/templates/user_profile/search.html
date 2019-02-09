@@ -1,0 +1,17 @@
+{% extends 'user_profile/base.html' %}
+{% block content %}
+
+    <div class="project-details" style="margin:80px;">
+    {% for result in results %}
+        <div class="card" style="margin:20px; display: inline-block; width: 18rem;">
+        <a href="{% url 'project_detail' result.designer result.id %}">
+            <img class="card-img-top" src= "{{ result.image_file_path.url }} " alt="Card image cap">
+        </a>
+            <div class="card-top">
+                <h5 class="card-title">{{ result.name }}</h5>
+                <b><p class="card-text">{{ result.date_created }}</p></b>
+            </div>
+        </div> 
+    {% endfor %}
+    </div>
+{% endblock %}

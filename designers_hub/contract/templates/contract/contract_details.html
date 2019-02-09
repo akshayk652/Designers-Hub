@@ -1,0 +1,55 @@
+{% extends 'user_profile/base.html' %} {% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/contract-details.css' %}" />
+{% endblock css %}
+
+{% block content %}
+<article>
+  <div class="project_card">
+    <div class="head size">
+      <p><a href="#">{{ contract.title }}</a></p>
+    </div>
+
+    <div class="project_content size">
+      <p class="project_desc">
+        {{ contract.description }}
+      </p>
+    </div>
+    <div class="slide">
+      <p class="make"><a href="#">With client</a></p>
+      <p class="make"> Date: <b>contract.date_created</b> </p>
+    </div>
+    <div class="slide secondary">
+      <p class="make">
+        <form action="{% url 'complete_contract' contract.id %}" method="post">
+          {% csrf_token %}
+          <button class="green" type="submit">Completed</button>
+        </form>
+      </p>
+      <p class="make ">
+        <form action="{% url 'delete_contract' contract.id %}" method="post">
+          {% csrf_token %}
+          <button class="red" type="submit">Delete</button>
+        </form>
+      </p>
+    </div>
+  </div>
+
+</article>
+<div class="download" id="#modal1">Download Files</div>
+
+<!-- Modal Structure -->
+<div class="main-modal hide">
+  <ul>
+    {% for file in files %}
+    <li><a href="{% url 'download' file.id %}">{{ file }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+<div class="upload"><a href="{% url 'contract-upload' contract.id %}">Upload files</a></div>
+{% endblock %}
+{% block js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="{% static 'js/download.js' %}"></script>
+{% endblock js %}

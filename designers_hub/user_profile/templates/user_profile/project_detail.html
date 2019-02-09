@@ -1,0 +1,32 @@
+{% extends 'user_profile/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/project.css' %}" />
+{% endblock css %}
+
+{% block content %}
+<article class="project-detail">
+	<div class="project_card">
+		<div class="head size">
+			<img class="user_img" src="{{ designer_user.profile_img.url }}">
+			<p><a href="{% url 'designer_profile' project.designer %}">{{ project.name }}</a></p>
+			<p class="date"><em>{{ project.date_created }}</em></p>
+		</div>
+		<div class="img-holder size">
+			<img src="{{ project.image_file_path.url }}" class="responsive" alt="">
+		</div>
+		<div class="project_content size">
+			<p class="project_desc">
+				{{ project.description }}
+			</p>
+		</div>
+		<div class="contrib">
+			<p><em> Contributed By- {{ project.designer }}</em></p>
+			<button>
+				<p><a href="{% url 'designer_profile' project.designer %}">View all projects by {{ project.designer }} </a></p>
+			</button>
+		</div>
+	</div>
+</article>
+{% endblock content %}

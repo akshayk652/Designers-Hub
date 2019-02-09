@@ -1,0 +1,13 @@
+{% extends 'user_profile/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container" style="width:40%; margin-top: 2em">
+    <form class="upload-form" id="forms" enctype="multipart/form-data" action="" method="POST">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <button style="margin-top: 2em" type="submit" class="btn btn-info">Upload</button>
+    </form>
+</div>
+
+{% endblock %}

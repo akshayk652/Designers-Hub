@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Assistant|Comfortaa|Merriweather|Playfair+Display|Righteous');
+*, html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.nav-section {
+    padding: 0.5em 1em;
+}
+
+/* GENERAL */
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #feffff;
+}
+/* Image size */
+.responsive-img {
+    width: 100%;
+    height: auto;
+   
+}
+
+.nav_btn {
+    background: #172528;
+    padding: 0.5em 1.2em;
+    margin:0  1em;
+    position: relative;
+    border-radius: 5px;
+    color: #feffff;
+    bottom: 0.4em;
+    box-shadow: 1px 1px 1px  gray;
+}
+.nav_btn:hover {
+    transform: scale(1.02)
+}
+/* NAVBAR STYLES */
+header {
+    width: 100%;
+    background: #3aafa9;
+    font-family: 'Merriweather', serif;
+}
+
+nav {
+    width: 98%;
+    margin: 0 auto;
+    padding: 0.8em 1em;
+    
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+.navbar .logo{
+    width: 58px;
+    height: 58px; 
+}
+.logo img {
+    border-radius: 50%;
+    margin-left: 15px;
+}
+
+.nav_content {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1em;
+}
+
+.navbar .search .nav-search {
+    background: #feffff;
+    padding: 0.05em 1em;
+    border-radius: 25px;
+    margin-top: 4px;
+    color: #3aafa9;
+}

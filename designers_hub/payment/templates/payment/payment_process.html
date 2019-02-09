@@ -1,0 +1,27 @@
+{% extends 'user_profile/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class='payment-options' style="text-align:center; display:block; margin-top:100px;">
+        <div>
+            <form action="{% url 'payment_done' %}" method="post">
+                {% csrf_token %}
+                Enter the amount: <input id="amount" name="amount"><br><br>
+                <h4>Pay using Stripe account.</h4>
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="{{ 'pk_test_SLTdL6MSMpKraxmgT7HD9IEa' }}"
+                    data-description="To make payment"
+                    data-amount= '1000'
+                    data-locale="auto">
+                </script>
+            </form>
+        </div>
+        <div style="margin-top:60px;">
+            <h4>Pay using Paypal account.</h4>
+            {{ form.render }}
+        </div>
+    </div>
+{% endblock %}
+
+

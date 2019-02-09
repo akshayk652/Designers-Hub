@@ -1,0 +1,94 @@
+article {
+    width: 45%;
+    margin: 10px auto;
+}
+.responsive {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+.project_card {
+    padding:1em;
+    height: 220px;
+    margin: 15px;
+    box-shadow: 1px 1px 2px 1px #a3adad;
+    border-radius: 14px;
+}
+.head {
+    padding-bottom: 0.4em;
+    font-size: 1.8em;
+}
+.head a {
+    color: #3aafa9;
+}
+.slide {
+    display: flex;
+    justify-content: space-between;
+}
+
+.slide a {
+    color: #ffffff;
+    background: #3aafa9;
+    padding: 0.3em 0.9em;
+    border-radius: 8px;
+}
+
+.project_content {
+    font-size: 0.9em;
+    padding: 0.5em;
+    text-align: start;
+    font-family: 'Comfortaa', cursive;
+    color: #172528;
+
+}
+.user_img {
+    width: 35px;
+    height: 35px;
+}
+.size {
+    margin: 5px;
+}
+.secondary {
+    margin-top: 2em;
+}
+.download {
+    background: #3aafa9;
+    width: 20%;
+    margin: 0 auto;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.6em  1.5em;
+    cursor: pointer;
+    border-radius: 14px;
+    font-family: 'Comfortaa', cursive;
+}
+.hide {
+    display: none;
+}
+.main-modal {
+    width: 18%;
+    background: #172528;
+   color: #ffffff;
+   margin: 0 auto;
+   text-align: center;
+   border-radius: 3px;
+}
+
+.main-modal ul li {
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid #d9dcdd;
+    padding: 5px;
+    font-family: 'Comfortaa', cursive;
+}
+.upload  {
+    margin: 1.5em auto 0 auto;
+    background: #3aafa9;
+    width: 20%;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.6em  1.5em;
+    cursor: pointer;
+    border-radius: 14px;
+    font-family: 'Comfortaa', cursive;
+}

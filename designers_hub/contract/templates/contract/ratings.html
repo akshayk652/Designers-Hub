@@ -1,0 +1,44 @@
+{% extends 'user_profile/base.html' %} {% load static %}
+
+{% block css %}
+<style>
+    .container h4 {
+margin-top: 2em;
+}
+</style>
+
+{% endblock css %}
+
+{% block content %}
+<section class="container center-align">
+    <h4>How was your experience ?</h4>
+    <form action="{% url 'contract-rating' pk %}" method="POST">
+        {% csrf_token %}
+        <p>
+            <label>
+                <input name="rate" type="radio" value=1 checked />
+                <span>Bad</span>
+            </label>
+
+            <label>
+                <input name="rate" type="radio" value=2 />
+                <span>Meh</span>
+            </label>
+            <label>
+                <input name="rate" type="radio" value=3 />
+                <span>Good</span>
+            </label>
+
+            <label>
+                <input name="rate" type="radio" value=4 />
+                <span>Amazing</span>
+            </label>
+            <label>
+                <input name="rate" type="radio" value=5 />
+                <span>The Best</span>
+            </label>
+        </p>
+        <button type="submit" class="waves-effect waves-light btn"><a style="margin-top:1.8em;">Submit</a>    
+        </form>
+</section>
+{% endblock %}
